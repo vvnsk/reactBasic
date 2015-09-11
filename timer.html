@@ -1,0 +1,41 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="css/css_reset.css" />
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+        <script src="lib/react.js"></script>
+        <script src="lib/JSXTransformer.js"></script>
+	</head>
+
+	<body>
+        <script type="text/jsx">
+
+
+            var Timer = React.createClass({
+  getInitialState: function() {
+    return {secondsElapsed: 0};
+  },
+  tick: function() {
+    this.setState({secondsElapsed: this.state.secondsElapsed + 1});
+  },
+  componentDidMount: function() {
+    this.interval = setInterval(this.tick, 1000);
+  },
+  componentWillUnmount: function() {
+    clearInterval(this.interval);
+  },
+  render: function() {
+    return (
+      <div>Seconds Elapsed: {this.state.secondsElapsed}</div>
+    );
+  }
+});
+
+React.render(<Timer />, document.body);
+
+
+        </script>
+	</body>
+
+</html>
